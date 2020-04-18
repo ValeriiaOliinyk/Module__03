@@ -1,12 +1,14 @@
+/* eslint-disable no-restricted-syntax */
+
 'use strict';
 
 const findBestEmployee = function(employees) {
-  const entries = Object.entries(employees);
-  let bestStaff = entries[0][0];
-  for (let i = 0; i < entries.length; i += 1) {
-    if (entries[0][1] < entries[i][1]) {
-      const [staffName] = entries[i];
-      bestStaff = staffName;
+  let max = 0;
+  let bestStaff;
+  for (const employee in employees) {
+    if (employees[employee] > max) {
+      max = employees[employee];
+      bestStaff = employee;
     }
   }
   return bestStaff;
